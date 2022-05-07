@@ -1,6 +1,9 @@
 package ex2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import ex1.Contact;
 
 public class MobilePhone extends App {
 	static Scanner input = new Scanner(System.in);
@@ -32,16 +35,16 @@ public class MobilePhone extends App {
 	public void handleCommand(String command) {
 		switch (command) {
 		case "CALENDER":
-			calender.run();
+			calender.run(phoneBook.getPhoneBook());
 			break;
 		case "MEDIA":
-			media.run();
+			media.run(null);
 			break;
 		case "SMS":
-			sms.run();
+			sms.run(phoneBook.getPhoneBook());
 			break;
 		case "PHONEBOOK":
-			phoneBook.run();
+			phoneBook.run(null);
 			break;
 		case "CONTENTS":
 			printAllApps();
@@ -59,6 +62,11 @@ public class MobilePhone extends App {
 		media.printOptions();
 		sms.printOptions();
 		phoneBook.printOptions();
+	}
+
+	@Override
+	public void phoneBookChanged(ArrayList<Contact> newPhoneBook) {
+		return;
 	}
 	
 

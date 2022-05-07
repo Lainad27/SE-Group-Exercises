@@ -1,6 +1,14 @@
 package ex2;
 
+import java.util.ArrayList;
+
+import ex1.Contact;
+
 public class MediaApp extends App {
+	
+	public String getAppName() {
+		return "Media app";
+	}
 
 	@Override
 	public void printOptions() {
@@ -14,10 +22,11 @@ public class MediaApp extends App {
 		
 	}
 
+
 	@Override
-	public String getAppName() {
-		// TODO Auto-generated method stub
-		return null;
+	public void phoneBookChanged(ArrayList<Contact> newPhoneBook) {
+		return;
+		
 	}
 
 }

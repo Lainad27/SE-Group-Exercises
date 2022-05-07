@@ -1,6 +1,9 @@
 package ex2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import ex1.Contact;
 
 public abstract class App {
 	static Scanner input = new Scanner(System.in);
@@ -8,8 +11,11 @@ public abstract class App {
 	public abstract void printOptions();
 	public abstract void handleCommand(String command);
 	public abstract String getAppName();
+	public abstract void phoneBookChanged(ArrayList<Contact> newPhoneBook);
 	
-	public void run() {
+	public void run(ArrayList<Contact> newPhoneBook) {
+		
+		phoneBookChanged(newPhoneBook);
 		
 		boolean programEnded = false;
 		while (!programEnded) {

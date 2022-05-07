@@ -13,9 +13,11 @@ import ex1.Contact;
 
 public class PhoneBookApp extends App {
 	
-	ArrayList<Contact> phoneBook = new ArrayList<Contact>();;
+	ArrayList<Contact> phoneBook = new ArrayList<Contact>();
 	
-	
+	public ArrayList<Contact> getPhoneBook() {
+		return phoneBook;
+	}
 	public String getAppName() {
 		return "PhoneBook app";
 	}
@@ -278,6 +280,12 @@ public class PhoneBookApp extends App {
 		    } catch (FileNotFoundException e) {
 		      System.out.println("An error occurred.");
 		    }
+	}
+
+	@Override
+	public void phoneBookChanged(ArrayList<Contact> newPhoneBook) {
+		return;
+		
 	}
 
 	
