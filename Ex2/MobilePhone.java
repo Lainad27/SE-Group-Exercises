@@ -1,31 +1,69 @@
 package ex2;
 
-import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Scanner;
 
-import ex1.Contact;
+import ex2.MobilePhone.AppPermissionsData;
 
-public class MobilePhone extends App {
+
+public class MobilePhone {
 	static Scanner input = new Scanner(System.in);
 	
-	CalendarApp calender;
-	MediaApp media;
-	SMSApp sms;
-	PhoneBookApp phoneBook;
+
+	Hashtable<App, AppPermissionsData> appToPermissions;
+	
+	PhoneBook phoneBook = new PhoneBook();
+	
+	CalendarApp calenderApp;
+	MediaApp mediaApp;
+	SMSApp smsApp;
+	PhoneBookApp phoneBookApp;
+	
+	enum Permissions{
+		PHONEBOOK
+	}
 	
 	public String getAppName() {
 		return "Phone";
 	}
 	
+	public class AppPermissionsData {
+		Hashtable<Permissions, Object> permissions;
+		private void addPermission(Permissions PermName, Object data) {
+			permissions.put(PermName, data);
+		}
+		
+		private void removePermission(Permissions PermName) {
+			permissions.remove(PermName);
+		}
+		
+		private AppPermissionsData() {
+			permissions =  new Hashtable<Permissions, Object>();
+		}
+		
+		public Object getDataFromPerm (Permissions PermName) {
+			return permissions.get(PermName);
+		}
+		
+	}
 	public MobilePhone() {
-		calender = new CalendarApp();
-		media = new MediaApp();
-		sms = new SMSApp();
-		phoneBook = new PhoneBookApp();
+		calenderApp = new CalendarApp();
+		mediaApp = new MediaApp();
+		smsApp = new SMSApp();
+		phoneBookApp = new PhoneBookApp();
+		appToPermissions = new Hashtable<App, AppPermissionsData>();
+		appToPermissions.put(calenderApp, new AppPermissionsData());
+		appToPermissions.put(mediaApp, new AppPermissionsData());
+		appToPermissions.put(smsApp, new AppPermissionsData());
+		appToPermissions.put(phoneBookApp, new AppPermissionsData());
+		
+		appToPermissions.get(calenderApp).addPermission(Permissions.PHONEBOOK, phoneBook);
+		appToPermissions.get(smsApp).addPermission(Permissions.PHONEBOOK, phoneBook);
+		appToPermissions.get(phoneBookApp).addPermission(Permissions.PHONEBOOK, phoneBook);
 	}
 	
 	public void printOptions() {
-		System.out.println("CALENDER - enter calender app");
+		System.out.println("CALENDAR - enter calender app");
 		System.out.println("MEDIA - enter media app");
 		System.out.println("SMS - enter SMS app");
 		System.out.println("PHONEBOOK - enter phoneBook app");
@@ -34,17 +72,17 @@ public class MobilePhone extends App {
 
 	public void handleCommand(String command) {
 		switch (command) {
-		case "CALENDER":
-			calender.run(phoneBook.getPhoneBook());
+		case "CALENDAR":
+			calenderApp.run(appToPermissions.get(calenderApp));
 			break;
 		case "MEDIA":
-			media.run(null);
+			mediaApp.run(appToPermissions.get(mediaApp));
 			break;
 		case "SMS":
-			sms.run(phoneBook.getPhoneBook());
+			smsApp.run(appToPermissions.get(smsApp));
 			break;
 		case "PHONEBOOK":
-			phoneBook.run(null);
+			phoneBookApp.run(appToPermissions.get(phoneBookApp));
 			break;
 		case "CONTENTS":
 			printAllApps();
@@ -58,16 +96,39 @@ public class MobilePhone extends App {
 	
 	
 	public void printAllApps() {
-		calender.printOptions();
-		media.printOptions();
-		sms.printOptions();
-		phoneBook.printOptions();
+		calenderApp.printOptions();
+		mediaApp.printOptions();
+		smsApp.printOptions();
+		phoneBookApp.printOptions();
+	}
+public void turnOn() {
+		System.out.println("Entered " + getAppName() + "!");
+		boolean phoneOn = true;
+		while (phoneOn) {
+			System.out.println("What command would you like to execute? \n\"help\" to see options, \"OFF\" to turn off phone");
+			System.out.print("> ");
+			String command = input.next();
+			
+			switch (command) {
+			case "help":
+			case "h":
+				printOptions();
+				break;
+			case "leave":
+			case "LEAVE":
+			case "off":
+			case "l":
+			case "o":
+			case "OFF":
+				phoneOn=false;
+				break;
+			default:
+				handleCommand(command);
+				break;
+			}
+		}
 	}
 
-	@Override
-	public void phoneBookChanged(ArrayList<Contact> newPhoneBook) {
-		return;
-	}
 	
 
 
