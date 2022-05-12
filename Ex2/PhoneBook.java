@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +22,7 @@ public class PhoneBook {
 			System.out.println("Invalid number.");
 			return;
 		}
-		if (searchcontact(name) != null ) {
+		if (searchContact(name) != null ) {
 			System.out.println("Contact already exists.");
 			return;
 		}
@@ -28,7 +30,7 @@ public class PhoneBook {
 		phoneBook.add(e);
 		System.out.println("Contact added.");
 	}
-	public Contact searchcontact(String name) {//2 only first occurrence
+	public Contact searchContact(String name) {//2 only first occurrence
 		for(Contact cnt: phoneBook) {
 			if(cnt.getName().compareTo(name) == 0 ) {
 				return cnt;
@@ -38,7 +40,7 @@ public class PhoneBook {
 	}
 	
 	public void deleteContact (String name) {//2
-		Contact e = searchcontact(name);
+		Contact e = searchContact(name);
 		if (e==null) {
 			System.out.println("Invalid name.");
 			return;
@@ -69,30 +71,15 @@ public class PhoneBook {
 	
 	
 	public void sortPhonebookByName () {   //(5 TODO use sort method as specified
-		ArrayList<Contact> arrList = new ArrayList<Contact>();
-		Iterator<Contact> it1= phoneBook.iterator();
-
-		//transfer LinkedList to ArrayList
-		while(it1.hasNext()) {
-	        Contact curr = phoneBook.remove(0);
-	        arrList.add(curr);
-		}
 		
-		//bubble sort
-	    for (int i=0; i<arrList.size(); i++) {
-		    for (int j=0; j<arrList.size() - i -1; j++) {
-		    	if(arrList.get(j).getName().compareTo(arrList.get(j+1).getName())>0) {
-		    		Contact temp = arrList.get(j);
-		    		arrList.set(j, arrList.get(j+1));
-		    		arrList.set(j+1 ,temp);
-		    	}
-		    }
-	    }
-	    
-	    // update Contact LinkedList
-	    for (int i=0; i<arrList.size(); i++) {
-	    	phoneBook.add(arrList.get(i));
-	    }
+		Collections.sort(phoneBook, new Comparator<Contact>()
+        {
+            public int compare(Contact contact1, Contact contact2)
+            {
+                return contact1.getName().compareTo(contact2.getName());
+            }        
+        }
+		);
 	
 		}
 	public void sortPhonebookByNumber () {   //(6
