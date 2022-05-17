@@ -23,7 +23,7 @@ public class MediaApp extends App {
 
 	public void handleCommand(String command) {
 		switch (command) {
-		case "1":
+		case "1": // get the parameters from the user and add a new media with those parameters
 			System.out.println("Please enter the name of the media you would like to add: ");
 			String name = input.next();
 			System.out.println("Please enter the amount of seconds it is: ");
@@ -40,12 +40,12 @@ public class MediaApp extends App {
 			else
 				System.out.println("Invalid file type.");	
 			break;
-		case "2":
+		case "2": // play media by name
 			System.out.println("What's the name of the media you would like to play?");
 			String mediaName = input.next();
 			database.playMediaByName(mediaName);
 			break;
-		case "3":
+		case "3": // play all media exist
 			database.playAllMedia();
 			break;
 		default:
