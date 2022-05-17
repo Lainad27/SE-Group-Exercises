@@ -22,7 +22,7 @@ public class MediaDatabase {
 		Iterator<MediaFile> it= data.iterator();
 		while (it.hasNext()) {
 			MediaFile resFile = it.next();
-			if (resFile.getName() == name)
+			if (resFile.getName().compareTo(name) == 0)
 				return resFile;
 		}
 		return null;
