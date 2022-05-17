@@ -38,8 +38,11 @@ public class MediaFile {
 		return mediaLength;
 	}
 	
-	public String getLengthFormatted() {
-		return mediaLength%60 + ":" + mediaLength/60;
+	public String getLengthFormatted() { // makes sure it looks good - for example 65 seconds is 1:05
+		String formattedSeconds = "" + mediaLength%60;
+		if (mediaLength%60 < 10)
+			formattedSeconds = "0" + formattedSeconds;
+		return mediaLength/60 + ":" + formattedSeconds;
 	}
 
 	public void setMediaLength(int mediaLength) {
