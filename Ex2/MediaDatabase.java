@@ -12,13 +12,13 @@ public class MediaDatabase {
 		this.data = new HashSet<MediaFile>();
 	}
 	
-	public void addMedia (String name, FileType fileType, int mediaLength) {
+	public void addMedia (String name, FileType fileType, int mediaLength) { // add a new Media 
 		MediaFile newFile = new MediaFile(name, fileType, mediaLength);
 		data.add(newFile);
 		System.out.println("Media file added.");
 	}
 	
-	public MediaFile searchMedia (String name) {
+	public MediaFile searchMedia (String name) { // search contact by name, return the first Media with that name
 		Iterator<MediaFile> it= data.iterator();
 		while (it.hasNext()) {
 			MediaFile resFile = it.next();
@@ -28,7 +28,7 @@ public class MediaDatabase {
 		return null;
 	}
 	
-	public void playMediaByName (String name) {
+	public void playMediaByName (String name) { // print Media by name, the function will print the name and the length of the media
 		MediaFile fileToPlay = searchMedia(name);
 		if (fileToPlay==null) {
 			System.out.println("There is no media file with that name.");
@@ -37,7 +37,7 @@ public class MediaDatabase {
 		fileToPlay.play();
 	}
 	
-	public void playAllMedia() {
+	public void playAllMedia() { // print all media exist
 		if (data.isEmpty()) {
 			System.out.println("There are currently no media files.");
 			return;
