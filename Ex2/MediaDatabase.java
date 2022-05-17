@@ -37,7 +37,7 @@ public class MediaDatabase {
 		fileToPlay.play();
 	}
 	
-	public void playAllMedia() { // print all media exist
+	public void playAllMedia() { // print all media exist, the function will print the name and the length for each media.
 		if (data.isEmpty()) {
 			System.out.println("There are currently no media files.");
 			return;
