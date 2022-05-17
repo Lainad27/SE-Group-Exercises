@@ -50,7 +50,7 @@ public class MediaFile {
 		return this.name + " is now playing for " + this.getLengthFormatted();
 	}
 	
-	public void play() {
+	public void play() { // delay the program while the media is playing 
 		System.out.println(this.toString());
 		try {
 			TimeUnit.SECONDS.sleep(mediaLength);// TODO what is this
