@@ -25,24 +25,25 @@ public class MediaApp extends App {
 		switch (command) {
 		case "1": // get the parameters from the user and add a new media with those parameters
 			System.out.println("Please enter the name of the media you would like to add: ");
-			String name = input.next();
+			String name = input.nextLine();
 			System.out.println("Please enter the amount of seconds it is: ");
-			int seconds = Integer.parseInt(input.next());
+			int seconds = input.nextInt();
 			System.out.println("Please enter the amount of minutes it is: ");
-			int minutes = Integer.parseInt(input.next());
-			System.out.println("Please enter the file type (video/audio): ");
+			int minutes = input.nextInt();
+			input.nextLine();  // Consume newline left-over
 			int totalLength = 60*minutes + seconds;
-			String fileTypeString = input.next();
-			if (fileTypeString.toLowerCase() == "video")
+			System.out.println("Please enter the file type (video/audio): ");
+			String fileTypeString = input.nextLine();
+			if (fileTypeString.toLowerCase().compareTo("video") == 0)
 				database.addMedia(name, FileType.VIDEO, totalLength);
-			else if (fileTypeString.toLowerCase() == "audio")
+			else if (fileTypeString.toLowerCase().compareTo("audio") == 0)
 				database.addMedia(name, FileType.AUDIO, totalLength);
 			else
 				System.out.println("Invalid file type.");	
 			break;
 		case "2": // play media by name
 			System.out.println("What's the name of the media you would like to play?");
-			String mediaName = input.next();
+			String mediaName = input.nextLine();
 			database.playMediaByName(mediaName);
 			break;
 		case "3": // play all media exist
