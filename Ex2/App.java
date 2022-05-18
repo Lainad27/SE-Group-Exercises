@@ -4,24 +4,27 @@ import java.util.Scanner;
 
 import ex2.MobilePhone.AppPermissionsData;
 
-public abstract class App { //All apps will inherit this class
-	static Scanner input = new Scanner(System.in); //The app needs a scanner for input
+public abstract class App {
+	public static Scanner input = new Scanner(System.in);
+	public abstract String getOptions();
+	public void printOptions() {
+		System.out.println(getOptions());
+		System.out.println("leave - leave the app");
+	}
+	public abstract void handleCommand(String command);
+	public abstract String getAppName();
+	public abstract void init(AppPermissionsData data);
 	
-	public abstract void printOptions(); //prints all command options
-	public abstract void handleCommand(String command); //Given a command, the app decides what to do.
-	public abstract String getAppName(); // Return's the name of the app.
-	public abstract void init(AppPermissionsData data); // This function will be called right after the app is started, so the app gets the latest data (like the phonebook)
-	
-	public void run(AppPermissionsData data) { //This function details how the app runs (taking commands)
+	public void run(AppPermissionsData data) {
 		
-		init(data); // use latest data from phone
+		init(data);
 		
 		System.out.println("Entered " + getAppName() + "!");
 		boolean programEnded = false;
 		while (!programEnded) {
 			System.out.println("What command would you like to execute? \n\"help\" to see options, \"leave\" to leave");
 			System.out.print(">> ");
-			String command = input.next();
+			String command = input.nextLine().toLowerCase();
 			
 			switch (command) {
 			case "help":
@@ -29,7 +32,7 @@ public abstract class App { //All apps will inherit this class
 				printOptions();
 				break;
 			case "leave":
-			case "LEAVE":
+			case "l":
 				programEnded=true;
 				break;
 			default:

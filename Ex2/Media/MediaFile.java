@@ -1,4 +1,4 @@
-package ex2;
+package ex2.Media;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +38,7 @@ public class MediaFile {
 		return mediaLength;
 	}
 	
-	public String getLengthFormatted() { // makes sure it looks good - for example 65 seconds is 1:05
+	public String getLengthFormatted() {
 		String formattedSeconds = "" + mediaLength%60;
 		if (mediaLength%60 < 10)
 			formattedSeconds = "0" + formattedSeconds;
@@ -53,7 +53,7 @@ public class MediaFile {
 		return this.name + " is now playing for " + this.getLengthFormatted();
 	}
 	
-	public void play() { // delay the program while the media is playing 
+	public void play() {
 		System.out.println(this.toString());
 		try {
 			TimeUnit.SECONDS.sleep(mediaLength);// TODO what is this

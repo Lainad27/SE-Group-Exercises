@@ -88,7 +88,7 @@ public class Main {
 			}
 		}
 	}
-	public static void addContact(String name, String phone, LinkedList<Contact> phoneBook) { //1 add contact to phone book from phone number nad name
+	public static void addContact(String name, String phone, LinkedList<Contact> phoneBook) { //1
 		if (phone.length() != 10 || !phone.startsWith("05") ) {
 			System.out.println("Invalid number.");
 			return;
@@ -97,7 +97,7 @@ public class Main {
 		phoneBook.add(e);
 		System.out.println("Contact added.");
 	}
-	public static Contact searchcontact(String name, LinkedList<Contact> phoneBook) {//2 search contact by name
+	public static Contact searchcontact(String name, LinkedList<Contact> phoneBook) {//2
 		for(Contact cnt: phoneBook) {
 			if(cnt.getName().compareTo(name) == 0 ) {
 				return cnt;
@@ -106,7 +106,7 @@ public class Main {
 		return null;
 	}
 	
-	public static void deleteContact (String name, LinkedList<Contact> phoneBook) {//2 delete contact by name
+	public static void deleteContact (String name, LinkedList<Contact> phoneBook) {//2
 		Contact e = searchcontact(name, phoneBook);
 		if (e==null) {
 			System.out.println("Invalid name.");
@@ -116,12 +116,12 @@ public class Main {
 		System.out.println("Contact deleted.");
     }
 	
-	public static void printAllContacts(List<Contact> phoneBook) {  //3 print all contacts to screen
+	public static void printAllContacts(List<Contact> phoneBook) {  //3
 		for (Contact contact : phoneBook) {
 			contact.print();
 		}
 	}
-	public static List<Contact> contactLookupByName(List<Contact> phoneBook, String name) {   //(4 search contact by name
+	public static List<Contact> contactLookupByName(List<Contact> phoneBook, String name) {   //(4
 		ArrayList<Contact> appear = new ArrayList<Contact>();
 		//put each appearance in ArrayList 
 	    for (Contact contact : phoneBook) {
@@ -137,7 +137,7 @@ public class Main {
 	}
 	
 	
-	public static void sortPhonebookByName (List<Contact> phoneBook) {   //(5 sort phone book by name
+	public static void sortPhonebookByName (List<Contact> phoneBook) {   //(5
 		ArrayList<Contact> arrList = new ArrayList<Contact>();
 		Iterator<Contact> it1= phoneBook.iterator();
 
@@ -164,7 +164,7 @@ public class Main {
 	    }
 	
 		}
-	public static void sortPhonebookByNumber (List<Contact> phoneBook) {   //(6 sort phone book by number
+	public static void sortPhonebookByNumber (List<Contact> phoneBook) {   //(6
 		ArrayList<Contact> arrList = new ArrayList<Contact>();
 		Iterator<Contact> it1= phoneBook.iterator();
 
@@ -191,8 +191,8 @@ public class Main {
 	    }
 	
 	}
-	public static void removeDuplicates (LinkedList<Contact> phoneBook) { //7 duplicates removed from phonebook
-		List<Contact> list = new ArrayList<Contact>(phoneBook); 
+	public static void removeDuplicates (LinkedList<Contact> phoneBook) { //7
+		List<Contact> list = new ArrayList<Contact>(phoneBook);
 		String name;
 		boolean smtngDeleted = false;
 		for(int i=0;i<list.size();i++) {
@@ -211,7 +211,7 @@ public class Main {
 			System.out.println("duplicates removed from phonebook.");
 	}
 
-	public static void reversePhoneBook(List<Contact> phoneBook) {   //(8  phone book reversed
+	public static void reversePhoneBook(List<Contact> phoneBook) {   //(8 we will solve recursively
 		// base case: the list is empty, or only one element is left
         if (phoneBook == null || phoneBook.size() <= 1) {
             return;
@@ -227,7 +227,7 @@ public class Main {
         phoneBook.add(value);
 	}
 	
-	public static void savePhonebook(List<Contact> phoneBook, String fileName) {//    (9) save phone book to txt file
+	public static void savePhonebook(List<Contact> phoneBook, String fileName) {//    (9)
 		//get the filename from the user.
 		
 	    try {
@@ -246,7 +246,7 @@ public class Main {
 		  }
 	}
 	
-	public static void loadPhonebook(List<Contact> phoneBook, String loadFileName) { // load phonebook from txt file
+	public static void loadPhonebook(List<Contact> phoneBook, String loadFileName) {
 		  //get the filename from the user.    (10)
 		
 		

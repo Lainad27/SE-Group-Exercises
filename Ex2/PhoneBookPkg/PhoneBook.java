@@ -1,4 +1,4 @@
-package ex2;
+package ex2.PhoneBookPkg;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,11 +11,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import ex2.Contact;
 
 public class PhoneBook {
 	
 	private ArrayList<Contact> phoneBook = new ArrayList<Contact>();
+	
+	public boolean isEmpty() {
+		return phoneBook.isEmpty();
+	}
 	
 	public void addContact(String name, String phone) { //1
 		if (phone.length() != 10 || !phone.startsWith("05") ) {
@@ -52,6 +55,11 @@ public class PhoneBook {
 	public void printAllContacts() {  //3
 		for (Contact contact : phoneBook) {
 			contact.print();
+		}
+	}
+	public void printAllContactNames() { 
+		for (Contact contact : phoneBook) {
+			System.out.println(contact.getName());
 		}
 	}
 	public List<Contact> contactLookupByName(String name) {   //(4 all occurrences

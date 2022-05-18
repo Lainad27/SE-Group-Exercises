@@ -3,7 +3,11 @@ package ex2;
 import java.util.Hashtable;
 import java.util.Scanner;
 
-import ex2.MobilePhone.AppPermissionsData;
+import ex2.Calendar.CalendarApp;
+import ex2.Media.MediaApp;
+import ex2.PhoneBookPkg.PhoneBook;
+import ex2.PhoneBookPkg.PhoneBookApp;
+import ex2.SMS.SMSApp;
 
 
 public class MobilePhone {
@@ -14,12 +18,12 @@ public class MobilePhone {
 	
 	PhoneBook phoneBook = new PhoneBook();
 	
-	CalendarApp calenderApp;
-	MediaApp mediaApp;
-	SMSApp smsApp;
-	PhoneBookApp phoneBookApp;
+	public CalendarApp calenderApp;
+	public MediaApp mediaApp;
+	public SMSApp smsApp;
+	public PhoneBookApp phoneBookApp;
 	
-	enum Permissions{
+	public enum Permissions{
 		PHONEBOOK
 	}
 	
@@ -68,23 +72,24 @@ public class MobilePhone {
 		System.out.println("SMS - enter SMS app");
 		System.out.println("PHONEBOOK - enter phoneBook app");
 		System.out.println("CONTENTS - Print the commands of all the apps");
+		System.out.println("OFF - turn off the phone");
 	}
 
 	public void handleCommand(String command) {
 		switch (command) {
-		case "CALENDAR":
+		case "calendar":
 			calenderApp.run(appToPermissions.get(calenderApp));
 			break;
-		case "MEDIA":
+		case "media":
 			mediaApp.run(appToPermissions.get(mediaApp));
 			break;
-		case "SMS":
+		case "sms":
 			smsApp.run(appToPermissions.get(smsApp));
 			break;
-		case "PHONEBOOK":
+		case "phonebook":
 			phoneBookApp.run(appToPermissions.get(phoneBookApp));
 			break;
-		case "CONTENTS":
+		case "contents":
 			printAllApps();
 			break;
 		default:
@@ -96,10 +101,14 @@ public class MobilePhone {
 	
 	
 	public void printAllApps() {
-		calenderApp.printOptions();
-		mediaApp.printOptions();
-		smsApp.printOptions();
-		phoneBookApp.printOptions();
+		System.out.println(calenderApp.getAppName() + ":");
+		System.out.println(calenderApp.getOptions());
+		System.out.println(mediaApp.getAppName() + ":");
+		System.out.println(mediaApp.getOptions());
+		System.out.println(smsApp.getAppName() + ":");
+		System.out.println(smsApp.getOptions());
+		System.out.println(phoneBookApp.getAppName() + ":");
+		System.out.println(phoneBookApp.getOptions());
 	}
 public void turnOn() {
 		System.out.println("Entered " + getAppName() + "!");
@@ -107,7 +116,7 @@ public void turnOn() {
 		while (phoneOn) {
 			System.out.println("What command would you like to execute? \n\"help\" to see options, \"OFF\" to turn off phone");
 			System.out.print("> ");
-			String command = input.next();
+			String command = input.nextLine().toLowerCase();
 			
 			switch (command) {
 			case "help":
@@ -115,11 +124,9 @@ public void turnOn() {
 				printOptions();
 				break;
 			case "leave":
-			case "LEAVE":
 			case "off":
 			case "l":
 			case "o":
-			case "OFF":
 				phoneOn=false;
 				break;
 			default:
