@@ -9,17 +9,17 @@ public class Event {
     private int meetingDuration;
     private Contact contact;
     
-	public Event(Date date, int meetingDuration, String description) {
-		this.date = new Date();
-        this.date.setDate(date.getDate());
-        this.date.setHours(date.getHours());
-        this.date.setMinutes(date.getMinutes());
-        this.date.setSeconds(0);
-        setMeetingDuration(meetingDuration);
-        setDescription(description);
+	public Event(Date date, int meetingDuration, String description) { // event constructor without contact 
+	this.date = new Date();
+	this.date.setDate(date.getDate());
+	this.date.setHours(date.getHours());
+	this.date.setMinutes(date.getMinutes());
+	this.date.setSeconds(0);
+	setMeetingDuration(meetingDuration);
+	setDescription(description);
     }
 
-    public Event(Date date, int meetingDuration, Contact contact) {
+    public Event(Date date, int meetingDuration, Contact contact) { //// meeting constructor with contact 
     	this.date = new Date();
         this.date.setDate(date.getDate());
         this.date.setHours(date.getHours());
