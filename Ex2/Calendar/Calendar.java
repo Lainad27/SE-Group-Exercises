@@ -28,20 +28,6 @@ public class Calendar {
         calendar.remove(eventToDelete);
         System.out.println("Event deleted.");
     }
-	/*
-	public void deleteEvent (Event eventToDelete) {//2 delete contact by name
-        boolean exists = false;
-        Event e = new Event(date, meetingDuration,description);
-        for(Event ev: calendar){
-            if(ev != null)
-                if(ev.getMeetingDuration()== (meetingDuration) && ev.getDate().compareTo(date) == 0 && ev.getDescription().compareTo(description) == 0)
-                    exists = true;
-        }
-        if (exists)
-            calendar.remove(e);
-        System.out.println("Event deleted.");
-    }*/
-	
 	
 	
 	public void printAllEventsNumbered(){
