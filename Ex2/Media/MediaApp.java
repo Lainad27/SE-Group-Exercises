@@ -9,7 +9,7 @@ import ex2.MobilePhone.AppPermissionsData;
 
 public class MediaApp extends App {
 	
-	MediaDatabase database = new MediaDatabase();
+	public MediaDatabase database = new MediaDatabase();
 	
 	
 	public String getAppName() {
