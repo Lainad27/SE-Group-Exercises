@@ -78,7 +78,7 @@ public class PhoneBook {
 	}
 	
 	
-	public void sortPhonebookByName () {   //(5 TODO use sort method as specified
+	public void sortPhonebookByName () {   //(5 sorts with comparator
 		
 		Collections.sort(phoneBook, new Comparator<Contact>()
         {
