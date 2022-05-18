@@ -3,7 +3,7 @@ package ex2.Media;
 import java.util.concurrent.TimeUnit;
 
 public class MediaFile {
-	enum FileType{
+	public enum FileType{
 		VIDEO,
 		AUDIO
 	}
