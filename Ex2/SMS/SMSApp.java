@@ -14,7 +14,7 @@ public class SMSApp extends App {
 	}
 	
 	PhoneBook phoneBook;
-	SMSDatabase database = new SMSDatabase(); //load data - including all chats
+	public SMSDatabase database = new SMSDatabase(); //load data - including all chats
 
 	public String getOptions() {
 		return "1 - Add chat to contact (you can have no more than one chat with a contact).\n"
