@@ -14,7 +14,7 @@ public class CalendarApp extends App {
     int month = 5;
 	
 	private PhoneBook phoneBook;
-	private Calendar calendar = new Calendar();
+	public Calendar calendar = new Calendar();
 	
 	public String getAppName() {
 		return "Calendar app";
