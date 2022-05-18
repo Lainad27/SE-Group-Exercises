@@ -16,14 +16,14 @@ public class MobilePhone {
 
 	Hashtable<App, AppPermissionsData> appToPermissions;
 	
-	PhoneBook phoneBook = new PhoneBook();
+	PhoneBook phoneBook = new PhoneBook(); //The phonebook is stored here
 	
-	public CalendarApp calenderApp;
+	public CalendarApp calenderApp; // all of our apps are fields
 	public MediaApp mediaApp;
 	public SMSApp smsApp;
 	public PhoneBookApp phoneBookApp;
 	
-	public enum Permissions{
+	public enum Permissions{ //enums of app permissions - for example the calendar may need the PHONEBOOK permission
 		PHONEBOOK
 	}
 	
@@ -31,7 +31,7 @@ public class MobilePhone {
 		return "Phone";
 	}
 	
-	public class AppPermissionsData {
+	public class AppPermissionsData { //inner class for app permissions. we won't really use it but maybe a developer in the future will add other permissions like location
 		Hashtable<Permissions, Object> permissions;
 		private void addPermission(Permissions PermName, Object data) {
 			permissions.put(PermName, data);
@@ -50,7 +50,7 @@ public class MobilePhone {
 		}
 		
 	}
-	public MobilePhone() {
+	public MobilePhone() { //initialize all apps and give sum of them the phonebook permission
 		calenderApp = new CalendarApp();
 		mediaApp = new MediaApp();
 		smsApp = new SMSApp();
@@ -66,7 +66,7 @@ public class MobilePhone {
 		appToPermissions.get(phoneBookApp).addPermission(Permissions.PHONEBOOK, phoneBook);
 	}
 	
-	public void printOptions() {
+	public void printOptions() { //phone options
 		System.out.println("CALENDAR - enter calender app");
 		System.out.println("MEDIA - enter media app");
 		System.out.println("SMS - enter SMS app");
@@ -100,7 +100,7 @@ public class MobilePhone {
 	}
 	
 	
-	public void printAllApps() {
+	public void printAllApps() {// gets options from all apps and prints them
 		System.out.println(calenderApp.getAppName() + ":");
 		System.out.println(calenderApp.getOptions());
 		System.out.println(mediaApp.getAppName() + ":");
@@ -110,7 +110,7 @@ public class MobilePhone {
 		System.out.println(phoneBookApp.getAppName() + ":");
 		System.out.println(phoneBookApp.getOptions());
 	}
-public void turnOn() {
+public void turnOn() { //main program loop for command input
 		System.out.println("Entered " + getAppName() + "!");
 		boolean phoneOn = true;
 		while (phoneOn) {
