@@ -90,7 +90,7 @@ public class Calendar {
 		while (it.hasNext()) {
 			Event ev = it.next();
 			if(ev.getContact()!= null && phoneBook.searchContact(ev.getContact().getName()) == null)
-				calendar.remove(ev);
+				it.remove();
 				
 		}
 		
